@@ -1,0 +1,60 @@
+---
+title: "The Leaflet"
+author: "Shashi Chandra''"
+date: "31 January 2017"
+output:
+  html_document: default
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Synopsis
+Using leaflet create a map .
+```{r ad}
+
+library(leaflet)
+
+```
+
+#Creating the literacy rate data
+```{r ade}
+
+literacy_rate<-c('93.71%','92.75%','91.23%','90.04%','88.24%','88.45%','86.55%','85.12%','86.19%','87.24%','87.65%','81.78%','84.27%','83.2%','88.35%','80.47%','84.36%','78.7%','75.34%')
+
+```
+#Adding the lattitude and longtitude of the data points.
+```{r aadfa}
+lng<-c(76.478537,73.051214,92.759435,91.556531,73.983301,76.777259,77.122063,83.993490,92.901520,82.010822,76.925918,81.111709,76.936560,85.360057,79.548187,75.089860,94.258237,79.984604,86.182116)
+
+
+lat<-c(10.295975,8.276982,23.339079,23.815844,15.452210,30.724143,28.708124,19.578030,26.154415,21.611626,22.848642,26.531091,33.558222,23.958960,15.569010,26.565243,28.175148,25.676941,25.612537)
+
+
+#The data Frame
+
+dataf<-data.frame(lat,lng)
+```
+```{r sq, echo=FALSE}
+s1<-c(93,92,91,90,88,88,86,85,86,87,87,81,84,83,88,80,84,78,75)
+
+```
+
+
+#And Finally the plot
+```{r plotp}
+
+m=leaflet(dataf) %>% addTiles %>% addMarkers(popup=~literacy_rate) %>% addCircleMarkers(fillColor = 'red' , fillOpacity = sqrt(s1)/10) %>%  addMarkers(clusterOptions=markerClusterOptions())
+
+m
+
+```
+
+#Conclusion:
+The map shows the literacy rate distribution across several sates in INDIA.
+
+
+
+
